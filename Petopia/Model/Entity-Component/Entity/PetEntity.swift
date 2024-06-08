@@ -8,7 +8,7 @@
 import Foundation
 import GameplayKit
 
-enum PetTypenya {
+enum PetType {
     case tiger, panda, elephant
 }
 
