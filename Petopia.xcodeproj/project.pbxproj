@@ -1,0 +1,878 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		487A413E2C0D5C8800E9039A /* PetStateMachineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487A413D2C0D5C8800E9039A /* PetStateMachineComponent.swift */; };
+		487A41402C0D5F9600E9039A /* PetNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487A413F2C0D5F9600E9039A /* PetNode.swift */; };
+		487A41422C0D699700E9039A /* Toy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487A41412C0D699700E9039A /* Toy.swift */; };
+		487A41442C0D69FF00E9039A /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487A41432C0D69FF00E9039A /* Drink.swift */; };
+		4899B6242C06DAAA00481698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4899B6232C06DAAA00481698 /* AppDelegate.swift */; };
+		4899B6262C06DAAB00481698 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4899B6252C06DAAB00481698 /* GameScene.sks */; };
+		4899B6282C06DAAB00481698 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4899B6272C06DAAB00481698 /* Actions.sks */; };
+		4899B62C2C06DAAB00481698 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4899B62B2C06DAAB00481698 /* GameViewController.swift */; };
+		4899B62F2C06DAAB00481698 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4899B62E2C06DAAB00481698 /* Base */; };
+		4899B6312C06DAAC00481698 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4899B6302C06DAAC00481698 /* Assets.xcassets */; };
+		4899B6342C06DAAC00481698 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4899B6332C06DAAC00481698 /* Base */; };
+		4899B68C2C0819DE00481698 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4899B68B2C0819DE00481698 /* Pet.swift */; };
+		4899B68E2C081F3D00481698 /* PetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4899B68D2C081F3D00481698 /* PetController.swift */; };
+		4899B6A52C0836DB00481698 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4899B6A42C0836DB00481698 /* Food.swift */; };
+		D952B0142C0E62EF0074C130 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0132C0E62EF0074C130 /* GameScene.swift */; };
+		D952B01B2C0E67160074C130 /* PetEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B01A2C0E67160074C130 /* PetEntity.swift */; };
+		D952B01D2C0E69990074C130 /* FlyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B01C2C0E69980074C130 /* FlyEntity.swift */; };
+		D952B01F2C0E69E20074C130 /* PetAgentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B01E2C0E69E20074C130 /* PetAgentNode.swift */; };
+		D952B0212C0E6D330074C130 /* FlyAgentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0202C0E6D330074C130 /* FlyAgentNode.swift */; };
+		D952B0232C0E6E690074C130 /* PetSpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0222C0E6E690074C130 /* PetSpriteComponent.swift */; };
+		D952B0252C0E6FC00074C130 /* FlySpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0242C0E6FC00074C130 /* FlySpriteComponent.swift */; };
+		D952B0272C0E70090074C130 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0262C0E70090074C130 /* GameState.swift */; };
+		D952B02A2C0E70750074C130 /* WalkingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0292C0E70750074C130 /* WalkingState.swift */; };
+		D952B02C2C0E74A30074C130 /* Fly_images.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D952B02B2C0E74A30074C130 /* Fly_images.atlas */; };
+		D952B0302C0E74F50074C130 /* PenguinImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D952B02F2C0E74F40074C130 /* PenguinImages.atlas */; };
+		D952B0322C0E77BF0074C130 /* PetIntelligenceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0312C0E77BF0074C130 /* PetIntelligenceComponent.swift */; };
+		D952B0342C0E79FC0074C130 /* FlyIntellifenceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0332C0E79FC0074C130 /* FlyIntellifenceComponent.swift */; };
+		D952B0372C0E7A380074C130 /* FlyingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0362C0E7A380074C130 /* FlyingState.swift */; };
+		D952B0392C0EA2080074C130 /* SeekingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0382C0EA2080074C130 /* SeekingState.swift */; };
+		D952B03D2C0EBDE00074C130 /* Mang_mang.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D952B03C2C0EBDE00074C130 /* Mang_mang.atlas */; };
+		D952B03F2C0EBFF50074C130 /* SmokeParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = D952B03E2C0EBFB00074C130 /* SmokeParticle.sks */; };
+		D952B0412C0FC1990074C130 /* PlayingBallState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0402C0FC1990074C130 /* PlayingBallState.swift */; };
+		D952B0432C0FC3B00074C130 /* BallAgentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0422C0FC3B00074C130 /* BallAgentNode.swift */; };
+		D952B0452C0FFB5D0074C130 /* Mangeak.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D952B0442C0FFB5D0074C130 /* Mangeak.atlas */; };
+		D952B0472C103C640074C130 /* EatingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0462C103C640074C130 /* EatingState.swift */; };
+		D952B0492C103CC60074C130 /* FoodAgentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0482C103CC60074C130 /* FoodAgentNode.swift */; };
+		D952B04B2C10639E0074C130 /* Chicken.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D952B04A2C10639E0074C130 /* Chicken.atlas */; };
+		D952B04D2C11F6630074C130 /* BathState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B04C2C11F6630074C130 /* BathState.swift */; };
+		D952B04F2C11FBD70074C130 /* SoapAgentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B04E2C11FBD70074C130 /* SoapAgentNode.swift */; };
+		D952B0522C1224AF0074C130 /* SoapParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = D952B0502C1224AF0074C130 /* SoapParticle.sks */; };
+		D952B0532C1224AF0074C130 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D952B0512C1224AF0074C130 /* Assets.xcassets */; };
+		D952B0552C1239820074C130 /* PlayingWandState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0542C1239820074C130 /* PlayingWandState.swift */; };
+		D952B0572C123A920074C130 /* WandAgentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0562C123A920074C130 /* WandAgentNode.swift */; };
+		D952B05A2C126B090074C130 /* poked.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D952B0592C126B090074C130 /* poked.mp3 */; };
+		D952B05C2C126D2D0074C130 /* Love.sks in Resources */ = {isa = PBXBuildFile; fileRef = D952B05B2C126D2D0074C130 /* Love.sks */; };
+		D952B05E2C126D4A0074C130 /* magic.sks in Resources */ = {isa = PBXBuildFile; fileRef = D952B05D2C126D4A0074C130 /* magic.sks */; };
+		D952B0B92C1277930074C130 /* LovePop.sks in Resources */ = {isa = PBXBuildFile; fileRef = D952B0B82C1277930074C130 /* LovePop.sks */; };
+		D952B0BB2C1277F50074C130 /* LoveFire.sks in Resources */ = {isa = PBXBuildFile; fileRef = D952B0BA2C1277F50074C130 /* LoveFire.sks */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D952B0792C1271FB0074C130 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		487A413D2C0D5C8800E9039A /* PetStateMachineComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetStateMachineComponent.swift; sourceTree = "<group>"; };
+		487A413F2C0D5F9600E9039A /* PetNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetNode.swift; sourceTree = "<group>"; };
+		487A41412C0D699700E9039A /* Toy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toy.swift; sourceTree = "<group>"; };
+		487A41432C0D69FF00E9039A /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
+		4899B6202C06DAAA00481698 /* Petopia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Petopia.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4899B6232C06DAAA00481698 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4899B6252C06DAAB00481698 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		4899B6272C06DAAB00481698 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		4899B62B2C06DAAB00481698 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		4899B62E2C06DAAB00481698 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4899B6302C06DAAC00481698 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4899B6332C06DAAC00481698 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4899B68B2C0819DE00481698 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
+		4899B68D2C081F3D00481698 /* PetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetController.swift; sourceTree = "<group>"; };
+		4899B6A42C0836DB00481698 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		D952B0132C0E62EF0074C130 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		D952B01A2C0E67160074C130 /* PetEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetEntity.swift; sourceTree = "<group>"; };
+		D952B01C2C0E69980074C130 /* FlyEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlyEntity.swift; sourceTree = "<group>"; };
+		D952B01E2C0E69E20074C130 /* PetAgentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetAgentNode.swift; sourceTree = "<group>"; };
+		D952B0202C0E6D330074C130 /* FlyAgentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlyAgentNode.swift; sourceTree = "<group>"; };
+		D952B0222C0E6E690074C130 /* PetSpriteComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetSpriteComponent.swift; sourceTree = "<group>"; };
+		D952B0242C0E6FC00074C130 /* FlySpriteComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlySpriteComponent.swift; sourceTree = "<group>"; };
+		D952B0262C0E70090074C130 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		D952B0292C0E70750074C130 /* WalkingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingState.swift; sourceTree = "<group>"; };
+		D952B02B2C0E74A30074C130 /* Fly_images.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Fly_images.atlas; sourceTree = "<group>"; };
+		D952B02F2C0E74F40074C130 /* PenguinImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PenguinImages.atlas; sourceTree = "<group>"; };
+		D952B0312C0E77BF0074C130 /* PetIntelligenceComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetIntelligenceComponent.swift; sourceTree = "<group>"; };
+		D952B0332C0E79FC0074C130 /* FlyIntellifenceComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlyIntellifenceComponent.swift; sourceTree = "<group>"; };
+		D952B0362C0E7A380074C130 /* FlyingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlyingState.swift; sourceTree = "<group>"; };
+		D952B0382C0EA2080074C130 /* SeekingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekingState.swift; sourceTree = "<group>"; };
+		D952B03C2C0EBDE00074C130 /* Mang_mang.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Mang_mang.atlas; sourceTree = "<group>"; };
+		D952B03E2C0EBFB00074C130 /* SmokeParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SmokeParticle.sks; sourceTree = "<group>"; };
+		D952B0402C0FC1990074C130 /* PlayingBallState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingBallState.swift; sourceTree = "<group>"; };
+		D952B0422C0FC3B00074C130 /* BallAgentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallAgentNode.swift; sourceTree = "<group>"; };
+		D952B0442C0FFB5D0074C130 /* Mangeak.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Mangeak.atlas; sourceTree = "<group>"; };
+		D952B0462C103C640074C130 /* EatingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatingState.swift; sourceTree = "<group>"; };
+		D952B0482C103CC60074C130 /* FoodAgentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodAgentNode.swift; sourceTree = "<group>"; };
+		D952B04A2C10639E0074C130 /* Chicken.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Chicken.atlas; sourceTree = "<group>"; };
+		D952B04C2C11F6630074C130 /* BathState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathState.swift; sourceTree = "<group>"; };
+		D952B04E2C11FBD70074C130 /* SoapAgentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoapAgentNode.swift; sourceTree = "<group>"; };
+		D952B0502C1224AF0074C130 /* SoapParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SoapParticle.sks; sourceTree = "<group>"; };
+		D952B0512C1224AF0074C130 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D952B0542C1239820074C130 /* PlayingWandState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingWandState.swift; sourceTree = "<group>"; };
+		D952B0562C123A920074C130 /* WandAgentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WandAgentNode.swift; sourceTree = "<group>"; };
+		D952B0592C126B090074C130 /* poked.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = poked.mp3; sourceTree = "<group>"; };
+		D952B05B2C126D2D0074C130 /* Love.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Love.sks; sourceTree = "<group>"; };
+		D952B05D2C126D4A0074C130 /* magic.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = magic.sks; sourceTree = "<group>"; };
+		D952B0632C1271F90074C130 /* Widget_PetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Widget_PetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D952B0B82C1277930074C130 /* LovePop.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LovePop.sks; sourceTree = "<group>"; };
+		D952B0BA2C1277F50074C130 /* LoveFire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LoveFire.sks; sourceTree = "<group>"; };
+		D952B0C02C127BCF0074C130 /* Widget_PetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Widget_PetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4899B61D2C06DAAA00481698 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D952B0602C1271F90074C130 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D952B0BD2C127BCF0074C130 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4899B6172C06DAAA00481698 = {
+			isa = PBXGroup;
+			children = (
+				4899B6222C06DAAA00481698 /* Petopia */,
+				4899B6212C06DAAA00481698 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4899B6212C06DAAA00481698 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4899B6202C06DAAA00481698 /* Petopia.app */,
+				D952B0632C1271F90074C130 /* Widget_PetExtension.appex */,
+				D952B0C02C127BCF0074C130 /* Widget_PetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4899B6222C06DAAA00481698 /* Petopia */ = {
+			isa = PBXGroup;
+			children = (
+				4899B6232C06DAAA00481698 /* AppDelegate.swift */,
+				4899B6322C06DAAC00481698 /* LaunchScreen.storyboard */,
+				4899B62D2C06DAAB00481698 /* Main.storyboard */,
+				4899B6302C06DAAC00481698 /* Assets.xcassets */,
+				4899B6802C08150500481698 /* Resources */,
+				4899B6852C08159300481698 /* Helper */,
+				4899B6882C0816C400481698 /* Model */,
+				4899B6862C08159D00481698 /* View */,
+				4899B6872C0815A500481698 /* Controller */,
+			);
+			path = Petopia;
+			sourceTree = "<group>";
+		};
+		4899B6802C08150500481698 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D952B0582C126AE80074C130 /* Audio */,
+				D952B04A2C10639E0074C130 /* Chicken.atlas */,
+				D952B0442C0FFB5D0074C130 /* Mangeak.atlas */,
+				D952B03C2C0EBDE00074C130 /* Mang_mang.atlas */,
+				D952B02F2C0E74F40074C130 /* PenguinImages.atlas */,
+				D952B03E2C0EBFB00074C130 /* SmokeParticle.sks */,
+				D952B02B2C0E74A30074C130 /* Fly_images.atlas */,
+				D952B0502C1224AF0074C130 /* SoapParticle.sks */,
+				D952B0512C1224AF0074C130 /* Assets.xcassets */,
+				D952B05B2C126D2D0074C130 /* Love.sks */,
+				D952B05D2C126D4A0074C130 /* magic.sks */,
+				D952B0B82C1277930074C130 /* LovePop.sks */,
+				D952B0BA2C1277F50074C130 /* LoveFire.sks */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4899B6852C08159300481698 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		4899B6862C08159D00481698 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4899B6252C06DAAB00481698 /* GameScene.sks */,
+				D952B0132C0E62EF0074C130 /* GameScene.swift */,
+				4899B6272C06DAAB00481698 /* Actions.sks */,
+				487A413F2C0D5F9600E9039A /* PetNode.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4899B6872C0815A500481698 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4899B62B2C06DAAB00481698 /* GameViewController.swift */,
+				4899B68D2C081F3D00481698 /* PetController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4899B6882C0816C400481698 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D952B0172C0E63630074C130 /* State */,
+				D952B0162C0E63530074C130 /* SpriteNode */,
+				D952B0152C0E63490074C130 /* Entity-Component */,
+				4899B68B2C0819DE00481698 /* Pet.swift */,
+				4899B6A42C0836DB00481698 /* Food.swift */,
+				487A413D2C0D5C8800E9039A /* PetStateMachineComponent.swift */,
+				487A41412C0D699700E9039A /* Toy.swift */,
+				487A41432C0D69FF00E9039A /* Drink.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D952B0152C0E63490074C130 /* Entity-Component */ = {
+			isa = PBXGroup;
+			children = (
+				D952B0192C0E63860074C130 /* Component */,
+				D952B0182C0E637E0074C130 /* Entity */,
+			);
+			path = "Entity-Component";
+			sourceTree = "<group>";
+		};
+		D952B0162C0E63530074C130 /* SpriteNode */ = {
+			isa = PBXGroup;
+			children = (
+				D952B01E2C0E69E20074C130 /* PetAgentNode.swift */,
+				D952B0562C123A920074C130 /* WandAgentNode.swift */,
+				D952B0202C0E6D330074C130 /* FlyAgentNode.swift */,
+				D952B0422C0FC3B00074C130 /* BallAgentNode.swift */,
+				D952B04E2C11FBD70074C130 /* SoapAgentNode.swift */,
+				D952B0482C103CC60074C130 /* FoodAgentNode.swift */,
+			);
+			path = SpriteNode;
+			sourceTree = "<group>";
+		};
+		D952B0172C0E63630074C130 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				D952B0262C0E70090074C130 /* GameState.swift */,
+				D952B0352C0E7A1F0074C130 /* Fly (Lalat) */,
+				D952B0282C0E705A0074C130 /* Pet */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		D952B0182C0E637E0074C130 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				D952B01A2C0E67160074C130 /* PetEntity.swift */,
+				D952B01C2C0E69980074C130 /* FlyEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		D952B0192C0E63860074C130 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				D952B0222C0E6E690074C130 /* PetSpriteComponent.swift */,
+				D952B0242C0E6FC00074C130 /* FlySpriteComponent.swift */,
+				D952B0312C0E77BF0074C130 /* PetIntelligenceComponent.swift */,
+				D952B0332C0E79FC0074C130 /* FlyIntellifenceComponent.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		D952B0282C0E705A0074C130 /* Pet */ = {
+			isa = PBXGroup;
+			children = (
+				D952B0292C0E70750074C130 /* WalkingState.swift */,
+				D952B04C2C11F6630074C130 /* BathState.swift */,
+				D952B0402C0FC1990074C130 /* PlayingBallState.swift */,
+				D952B0462C103C640074C130 /* EatingState.swift */,
+				D952B0542C1239820074C130 /* PlayingWandState.swift */,
+				D952B0382C0EA2080074C130 /* SeekingState.swift */,
+			);
+			path = Pet;
+			sourceTree = "<group>";
+		};
+		D952B0352C0E7A1F0074C130 /* Fly (Lalat) */ = {
+			isa = PBXGroup;
+			children = (
+				D952B0362C0E7A380074C130 /* FlyingState.swift */,
+			);
+			path = "Fly (Lalat)";
+			sourceTree = "<group>";
+		};
+		D952B0582C126AE80074C130 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				D952B0592C126B090074C130 /* poked.mp3 */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4899B61F2C06DAAA00481698 /* Petopia */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4899B6372C06DAAC00481698 /* Build configuration list for PBXNativeTarget "Petopia" */;
+			buildPhases = (
+				4899B61C2C06DAAA00481698 /* Sources */,
+				4899B61D2C06DAAA00481698 /* Frameworks */,
+				4899B61E2C06DAAA00481698 /* Resources */,
+				D952B0792C1271FB0074C130 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Petopia;
+			productName = Petopia;
+			productReference = 4899B6202C06DAAA00481698 /* Petopia.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D952B0622C1271F90074C130 /* Widget_PetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D952B0762C1271FB0074C130 /* Build configuration list for PBXNativeTarget "Widget_PetExtension" */;
+			buildPhases = (
+				D952B05F2C1271F90074C130 /* Sources */,
+				D952B0602C1271F90074C130 /* Frameworks */,
+				D952B0612C1271F90074C130 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Widget_PetExtension;
+			productName = Widget_PetExtension;
+			productReference = D952B0632C1271F90074C130 /* Widget_PetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		D952B0BF2C127BCF0074C130 /* Widget_PetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D952B0D02C127BD10074C130 /* Build configuration list for PBXNativeTarget "Widget_PetExtension" */;
+			buildPhases = (
+				D952B0BC2C127BCF0074C130 /* Sources */,
+				D952B0BD2C127BCF0074C130 /* Frameworks */,
+				D952B0BE2C127BCF0074C130 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Widget_PetExtension;
+			productName = Widget_PetExtension;
+			productReference = D952B0C02C127BCF0074C130 /* Widget_PetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4899B6182C06DAAA00481698 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					4899B61F2C06DAAA00481698 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					D952B0622C1271F90074C130 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					D952B0BF2C127BCF0074C130 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = 4899B61B2C06DAAA00481698 /* Build configuration list for PBXProject "Petopia" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4899B6172C06DAAA00481698;
+			productRefGroup = 4899B6212C06DAAA00481698 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4899B61F2C06DAAA00481698 /* Petopia */,
+				D952B0622C1271F90074C130 /* Widget_PetExtension */,
+				D952B0BF2C127BCF0074C130 /* Widget_PetExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4899B61E2C06DAAA00481698 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D952B05A2C126B090074C130 /* poked.mp3 in Resources */,
+				4899B6262C06DAAB00481698 /* GameScene.sks in Resources */,
+				D952B0B92C1277930074C130 /* LovePop.sks in Resources */,
+				D952B04B2C10639E0074C130 /* Chicken.atlas in Resources */,
+				D952B05C2C126D2D0074C130 /* Love.sks in Resources */,
+				4899B62F2C06DAAB00481698 /* Base in Resources */,
+				D952B03D2C0EBDE00074C130 /* Mang_mang.atlas in Resources */,
+				D952B0302C0E74F50074C130 /* PenguinImages.atlas in Resources */,
+				D952B0452C0FFB5D0074C130 /* Mangeak.atlas in Resources */,
+				D952B0532C1224AF0074C130 /* Assets.xcassets in Resources */,
+				D952B05E2C126D4A0074C130 /* magic.sks in Resources */,
+				D952B0BB2C1277F50074C130 /* LoveFire.sks in Resources */,
+				D952B0522C1224AF0074C130 /* SoapParticle.sks in Resources */,
+				4899B6312C06DAAC00481698 /* Assets.xcassets in Resources */,
+				D952B02C2C0E74A30074C130 /* Fly_images.atlas in Resources */,
+				4899B6282C06DAAB00481698 /* Actions.sks in Resources */,
+				D952B03F2C0EBFF50074C130 /* SmokeParticle.sks in Resources */,
+				4899B6342C06DAAC00481698 /* Base in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D952B0612C1271F90074C130 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D952B0BE2C127BCF0074C130 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4899B61C2C06DAAA00481698 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				487A41402C0D5F9600E9039A /* PetNode.swift in Sources */,
+				4899B68E2C081F3D00481698 /* PetController.swift in Sources */,
+				4899B68C2C0819DE00481698 /* Pet.swift in Sources */,
+				D952B0432C0FC3B00074C130 /* BallAgentNode.swift in Sources */,
+				D952B0392C0EA2080074C130 /* SeekingState.swift in Sources */,
+				D952B0492C103CC60074C130 /* FoodAgentNode.swift in Sources */,
+				D952B0572C123A920074C130 /* WandAgentNode.swift in Sources */,
+				D952B0372C0E7A380074C130 /* FlyingState.swift in Sources */,
+				D952B04D2C11F6630074C130 /* BathState.swift in Sources */,
+				D952B0322C0E77BF0074C130 /* PetIntelligenceComponent.swift in Sources */,
+				D952B01B2C0E67160074C130 /* PetEntity.swift in Sources */,
+				4899B62C2C06DAAB00481698 /* GameViewController.swift in Sources */,
+				D952B0232C0E6E690074C130 /* PetSpriteComponent.swift in Sources */,
+				487A413E2C0D5C8800E9039A /* PetStateMachineComponent.swift in Sources */,
+				D952B01D2C0E69990074C130 /* FlyEntity.swift in Sources */,
+				D952B04F2C11FBD70074C130 /* SoapAgentNode.swift in Sources */,
+				D952B0412C0FC1990074C130 /* PlayingBallState.swift in Sources */,
+				D952B0252C0E6FC00074C130 /* FlySpriteComponent.swift in Sources */,
+				D952B0472C103C640074C130 /* EatingState.swift in Sources */,
+				487A41422C0D699700E9039A /* Toy.swift in Sources */,
+				D952B0342C0E79FC0074C130 /* FlyIntellifenceComponent.swift in Sources */,
+				D952B0552C1239820074C130 /* PlayingWandState.swift in Sources */,
+				D952B02A2C0E70750074C130 /* WalkingState.swift in Sources */,
+				4899B6A52C0836DB00481698 /* Food.swift in Sources */,
+				D952B0212C0E6D330074C130 /* FlyAgentNode.swift in Sources */,
+				D952B0142C0E62EF0074C130 /* GameScene.swift in Sources */,
+				487A41442C0D69FF00E9039A /* Drink.swift in Sources */,
+				D952B0272C0E70090074C130 /* GameState.swift in Sources */,
+				4899B6242C06DAAA00481698 /* AppDelegate.swift in Sources */,
+				D952B01F2C0E69E20074C130 /* PetAgentNode.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D952B05F2C1271F90074C130 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D952B0BC2C127BCF0074C130 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4899B62D2C06DAAB00481698 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4899B62E2C06DAAB00481698 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4899B6322C06DAAC00481698 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4899B6332C06DAAC00481698 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4899B6352C06DAAC00481698 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4899B6362C06DAAC00481698 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4899B6382C06DAAC00481698 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J44YP99CCP;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = team13.Petopia;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEXTURE_ATLAS_MAXIMUM_SIZE = 4096x4096;
+			};
+			name = Debug;
+		};
+		4899B6392C06DAAC00481698 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J44YP99CCP;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = team13.Petopia;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEXTURE_ATLAS_MAXIMUM_SIZE = 4096x4096;
+			};
+			name = Release;
+		};
+		D952B0772C1271FB0074C130 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J44YP99CCP;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widget_Pet/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Widget_Pet;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "team13.Petopia.Widget-Pet";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D952B0782C1271FB0074C130 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J44YP99CCP;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widget_Pet/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Widget_Pet;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "team13.Petopia.Widget-Pet";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D952B0D12C127BD10074C130 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J44YP99CCP;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widget_Pet/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Widget_Pet;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "team13.Petopia.Widget-Pet";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D952B0D22C127BD10074C130 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J44YP99CCP;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widget_Pet/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Widget_Pet;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "team13.Petopia.Widget-Pet";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4899B61B2C06DAAA00481698 /* Build configuration list for PBXProject "Petopia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4899B6352C06DAAC00481698 /* Debug */,
+				4899B6362C06DAAC00481698 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4899B6372C06DAAC00481698 /* Build configuration list for PBXNativeTarget "Petopia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4899B6382C06DAAC00481698 /* Debug */,
+				4899B6392C06DAAC00481698 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D952B0762C1271FB0074C130 /* Build configuration list for PBXNativeTarget "Widget_PetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D952B0772C1271FB0074C130 /* Debug */,
+				D952B0782C1271FB0074C130 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D952B0D02C127BD10074C130 /* Build configuration list for PBXNativeTarget "Widget_PetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D952B0D12C127BD10074C130 /* Debug */,
+				D952B0D22C127BD10074C130 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4899B6182C06DAAA00481698 /* Project object */;
+}
