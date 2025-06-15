@@ -12,6 +12,8 @@ import GameplayKit
 class FlyAgentNode : SKSpriteNode, GKAgentDelegate{
     var agent : GKAgent2D?
     private var flyanimation:[SKTexture]
+    var visualAgent : SKSpriteNode?
+    
     
     init(scene: SKScene, position: CGPoint, size: CGSize) {
         
@@ -35,6 +37,24 @@ class FlyAgentNode : SKSpriteNode, GKAgentDelegate{
 //        self.physicsBody?.isResting = true
         scene.addChild(self)
         
+        self.agent = GKAgent2D()
+        self.agent!.position = vector_float2(x: Float(position.x), y: Float(position.y))
+        self.agent!.delegate = self
+        self.agent?.radius = Float(self.size.height/2)
+        self.agent!.maxSpeed = 100
+        self.agent!.maxAcceleration = 50
+        self.agent!.mass = 0.2
+        
+        let agentNode = SKSpriteNode(texture: self.texture)
+        agentNode.size = self.size
+        
+        agentNode.position = CGPoint(x: (self.position.x), y: (self.position.y)) // Posisi awal
+        agentNode.run(SKAction.colorize(with: SKColor.black, colorBlendFactor: 100, duration: 1))
+        agentNode.zPosition = -1000
+        self.visualAgent = agentNode
+        self.visualAgent?.xScale = 1.1*(self.xScale)
+//        scene.addChild(agentNode)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -51,7 +71,7 @@ class FlyAgentNode : SKSpriteNode, GKAgentDelegate{
     }
     
     func agentDidUpdate(_ agent: GKAgent) {
-        print("Fly agent point : \(self.agent?.position)")
+//        print("Fly agent point : \(self.agent?.position)")
 //        print("Cohered agent point : \(self.coheredAgent.position)")
         var sizeBaru = CGSize(width: -(20 - self.position.y/400 * 15 + 20), height: -(20 - self.position.y/400 * 15 + 20))
         
@@ -64,11 +84,20 @@ class FlyAgentNode : SKSpriteNode, GKAgentDelegate{
     }
     
     func agentWillUpdate(_ agent: GKAgent) {
-        print("agent Will Update Pet")
+        print("agent Will Update Fly")
         if let agent2d = agent as? GKAgent2D {
             agent2d.position = SIMD2(Float(self.position.x), Float(self.position.y))
         }
+        
+        self.visualAgent?.position = CGPoint(x: self.position.x , y: self.position.y )
+        self.visualAgent?.size = CGSize(width: self.size.width + 10, height : self.size.height + 10)
+        self.visualAgent?.texture = self.texture
     }
+    
+//    func setHidden () {
+//        self.isHidden = !self.isHidden
+//        self.agent?.position = SIMD2(Float(self.position.x), Float(self.position.y))
+//    }
     
 }
 

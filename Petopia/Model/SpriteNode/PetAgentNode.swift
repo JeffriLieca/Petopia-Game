@@ -23,10 +23,12 @@ class PetAgentNode : SKSpriteNode, GKAgentDelegate{
     var normalFrame : SKTexture
     var idleFrame : SKTexture
     var pokedFrame : SKTexture
+    var deadFrame :SKTexture
     var pokedSound : SKAudioNode
+    
 
     var walkingParticle : SKEmitterNode?
-    var shadow : SKTexture?
+    var shadow : SKSpriteNode?
     let petCategory: UInt32 = 0x1 << 0
     let ballCategory: UInt32 = 0x1 << 1
     let wallCategory: UInt32 = 0x1 << 2
@@ -42,6 +44,7 @@ class PetAgentNode : SKSpriteNode, GKAgentDelegate{
         self.pokedFrame = petAnimatedAtlas.textureNamed("poke_2")
         self.idleFrame = petAnimatedAtlas.textureNamed("Idle 1")
         self.pokedSound = SKAudioNode(fileNamed: "poked")
+        self.deadFrame = petAnimatedAtlas.textureNamed("Mati")
      
 
         
@@ -56,9 +59,9 @@ class PetAgentNode : SKSpriteNode, GKAgentDelegate{
         
         // Idle Frame
         var idleFrames: [SKTexture] = []
-        numImages = 2
+        numImages = 3
         for i in 1...numImages {
-            let petTextureName = "poke_\(i)"
+            let petTextureName = "Idle \(i)"
             idleFrames.append(petAnimatedAtlas.textureNamed(petTextureName))
         }
         self.petIdleFrames = idleFrames
@@ -93,6 +96,7 @@ class PetAgentNode : SKSpriteNode, GKAgentDelegate{
         let aspectRatioShadow = shadowTexture.size().width / shadowTexture.size().height
         let calculatedWidthShadow = targetHeightShadow * aspectRatioShadow
         shadow.size = CGSize(width: calculatedWidthShadow, height: targetHeightShadow)
+        self.shadow = shadow
         
         self.addChild(shadow)
         
@@ -119,10 +123,11 @@ class PetAgentNode : SKSpriteNode, GKAgentDelegate{
         self.agent = GKAgent2D()
         self.agent!.position = vector_float2(x: Float(position.x), y: Float(position.y))
         self.agent!.delegate = self
+        self.agent?.radius = Float(self.size.height/2)
         self.agent!.maxSpeed = 300
         self.agent!.maxAcceleration = 50
         self.agent!.speed = 100
-        self.physicsBody = SKPhysicsBody(circleOfRadius: size.width/3)
+        self.physicsBody = SKPhysicsBody(circleOfRadius: size.width/4)
 //        self.physicsBody = SKPhysicsBody(texture: petWalkingFrames[0], size: self.size)
 //        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: size.width, height: self.size.height), center: CGPoint(x: 0, y: 0))
         self.physicsBody?.restitution = 1
@@ -154,7 +159,7 @@ class PetAgentNode : SKSpriteNode, GKAgentDelegate{
         agentNode.zPosition = -1000
         self.visualAgent = agentNode
         self.visualAgent?.xScale = 1.1*(self.xScale)
-        scene.addChild(agentNode)
+//        scene.addChild(agentNode)
 
 
     }
@@ -166,6 +171,11 @@ class PetAgentNode : SKSpriteNode, GKAgentDelegate{
     func agentDidUpdate(_ agent: GKAgent) {
         
         var sizeBaru = CGSize(width: 150 - self.position.y/400 * 100 + 100, height: 150 - self.position.y/400 * 100 + 100)
+        
+//        if self.position.x <= 0 || self.position.y <= 0 || self.position.x >= self.frame.maxX || self.position.y >= self.frame.midY {
+//            self.position = CGPoint(x: (self.scene?.frame.midX)!, y: (self.scene?.frame.midY)! - 150)
+//        }
+        
         if !diem{
             if (self.agent?.position.x)! < Float(self.position.x)
             {
@@ -182,7 +192,7 @@ class PetAgentNode : SKSpriteNode, GKAgentDelegate{
 //                self.scale(to: CGSize(width: -100, height: 100))
             }
             
-            print("agent Did Update Pet")
+//            print("agent Did Update Pet")
             if let agent2d = agent as? GKAgent2D {
                 //                self.position = CGPoint(x: CGFloat(agent2d.position.x), y: CGFloat(agent2d.position.y))
                 
@@ -206,6 +216,9 @@ class PetAgentNode : SKSpriteNode, GKAgentDelegate{
 //                }
 //
 //                else{
+                if agent2d.position.x <= 0 || agent2d.position.y <= 0 || agent2d.position.x >= Float(self.scene!.frame.maxX) || agent2d.position.y >= Float((self.scene?.frame.midY)!) {
+                    agent2d.position = vector_float2(x: Float((self.scene?.frame.midX)!), y: Float((self.scene?.frame.midY)!) - 150)
+                }
                     self.position = CGPoint(x: CGFloat(agent2d.position.x), y: CGFloat(agent2d.position.y))
 //                }
             }
@@ -215,7 +228,7 @@ class PetAgentNode : SKSpriteNode, GKAgentDelegate{
 
     func agentWillUpdate(_ agent: GKAgent) {
         if !diem{
-            print("agent Will Update Pet")
+//            print("agent Will Update Pet")
             if let agent2d = agent as? GKAgent2D {
                 //                agent2d.position = SIMD2(Float(self.position.x), Float(self.position.y))
                 
@@ -235,8 +248,17 @@ class PetAgentNode : SKSpriteNode, GKAgentDelegate{
 //                    
 //                }
 //                else{
+                if self.position.x <= 0 || self.position.y <= 0 || self.position.x >= self.scene!.frame.maxX || self.position.y >= (self.scene?.frame.midY)! {
+                    self.position = CGPoint(x: (self.scene?.frame.midX)!, y: (self.scene?.frame.midY)! - 150)
+                }
+                print ("min X : \(self.scene!.frame.minX)")
+                print ("min Y : \(self.scene!.frame.minY)")
+                print ("max X : \(self.scene!.frame.maxX)")
+                print ("mid Y : \(self.scene!.frame.midY)")
+                
                     agent2d.position = SIMD2(Float(self.position.x), Float(self.position.y))
 //                }
+             
                 
                 
                 
@@ -340,6 +362,11 @@ class PetAgentNode : SKSpriteNode, GKAgentDelegate{
             SKAction.wait(forDuration: 1),  // Tunggu cukup lama agar partikel diemit
             SKAction.removeFromParent()     // Hapus emitter dari scene
         ]))
+    }
+    
+    func ShowLove () {
+        self.loveParticle!.particleBirthRate = 1
+        self.loveParticle!.particleBirthRate = 0
     }
 
 

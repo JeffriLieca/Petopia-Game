@@ -26,6 +26,7 @@ class BathState : GameState {
     var isDragging : Bool = false
     var locationDrag : CGPoint?
     var jumlahBubble : Int = 0
+    var locDiem : CGPoint?
     
     init(entity:PetEntity, game:GameScene) {
         super.init(entity: entity, game: game)
@@ -64,7 +65,7 @@ class BathState : GameState {
         
 //        let soap = SoapAgentNode (scene: game, position: CGPoint(x: game.frame.maxX - 100, y: game.frame.minY + 150), size: CGSize(width: 100,height: 100))
         let soap = SoapAgentNode (scene: game, position: CGPoint(x: game.frame.midX, y: game.frame.minY+150), size: CGSize(width: 100,height: 100))
-        
+        print("Enter Bath")
         self.soap = soap
         self.totalTime = 0
         self.sudahMandi = false
@@ -86,10 +87,12 @@ class BathState : GameState {
         self.petComponentSprite!.agent!.maxSpeed = 200
         self.petComponentSprite!.agent!.maxAcceleration = 50
         self.petComponentSprite!.agent!.speed = 50
+        let copy : GKAgent2D = self.soap?.agent?.copy() as! GKAgent2D
+        copy.position = vector_float2(x: Float(self.soap!.position.x), y: Float(self.soap!.position.y))
+        self.locDiem = self.soap?.position
+        self.petComponentSprite!.agent!.behavior!.setWeight(10, for: GKGoal(toSeekAgent: copy))
         
-        self.petComponentSprite!.agent!.behavior!.setWeight(10, for: GKGoal(toSeekAgent: (self.soap?.agent!)!))
-        
-        gambarRute()
+//        gambarRute()
 
         
 //        setDrawTrails(draw: true)
@@ -154,7 +157,7 @@ class BathState : GameState {
         
         // ke tempat mandi
         
-        let moveDifference = CGPoint(x: (self.soap!.position.x) - self.petComponentSprite!.position.x, y: (self.soap!.position.y)  - self.petComponentSprite!.position.y + 30)
+        let moveDifference = CGPoint(x: (self.locDiem!.x) - self.petComponentSprite!.position.x, y: (self.locDiem!.y)  - self.petComponentSprite!.position.y + 30)
         let distanceToMove = sqrt(moveDifference.x * moveDifference.x + moveDifference.y * moveDifference.y)
         
         //        if distanceToMove <= 150 {
@@ -162,23 +165,24 @@ class BathState : GameState {
         //            self.petComponentSprite?.run(moveAction)
         //
         //        }
-        print("distance to move : \(distanceToMove)")
+//        print("distance to move : \(distanceToMove)")
         
         if !ubah {
             if distanceToMove <= 1 {
-                self.petComponentSprite?.position = CGPoint(x: (self.soap?.position.x)!, y: (self.soap?.position.y)! + 30)
+                self.petComponentSprite?.position = CGPoint(x: (self.locDiem?.x)!, y: (self.locDiem?.y)! + 30)
                 self.petComponentSprite?.setDiem(diem: true)
                 self.petComponentSprite!.setDrawTrails(draw: false)                //                self.entity.component(ofType: PetIntelligenceComponent.self)?.stateMachine.enter(EatingState.self)
                 ubah = true
                 
             }
             else if distanceToMove <= 50 {
-                let moveAction = SKAction.move(to: CGPoint(x: (self.soap?.position.x)!, y: (self.soap?.position.y)! + 30), duration: 1)
+                let moveAction = SKAction.move(to: CGPoint(x: (self.locDiem?.x)!, y: (self.locDiem?.y)! + 30), duration: 0.02*distanceToMove)
                 self.petComponentSprite?.run(moveAction)
                 self.petComponentSprite?.setDiem(diem: true)
                 totalTime+=seconds
                 self.petComponentSprite!.setDrawTrails(draw: false)
             }
+            print ("distancetoMove: \(distanceToMove)")
         }
         else
         {
@@ -190,8 +194,10 @@ class BathState : GameState {
             else {
                 if sudahMandi{
                     totalTime += seconds
+                    self.game.pet?.hygieneLevel = true
+
                     
-                    if (totalTime >= 8){
+                    if (totalTime >= 4){
                         
                         
                         self.entity.component(ofType: PetIntelligenceComponent.self)?.stateMachine.enter(WalkingState2.self)
@@ -205,20 +211,33 @@ class BathState : GameState {
                                 
                             }
                             else{
-                                if !(jumlahBubble >= 200){
+                                if !(jumlahBubble >= 150){
                                     visualizeOverlap()
                                     jeda = 0
                                 }
                                 else{
                                     sudahMandi = true
-//                                    removeBubblesWithAnimation()
+                                    
+//                                    self.game.flies?.component(ofType: FlyIntelligenceComponent.self)?.stateMachine.state(forClass: FlyingState.self)?.flyComponentSprite?.setHidden()
+//                                    self.game.flies?.component(ofType: FlySpriteComponent.self)?.SetHidden(hidden: true)
+                                    self.game.pet?.hygieneLevel = true
+                                    
+                                    //                                    removeBubblesWithAnimation()
                                     let removeBubble = SKAction.run {
                                         self.removeBubblesWithAnimation()
                                     }
                                     let fadeOutAction = SKAction.fadeOut(withDuration: 1.5)
-                                       let removeAction = SKAction.removeFromParent()
+                                    let removeAction = SKAction.removeFromParent()
+//                                    let waitnya = SKAction.wait(forDuration: 2)
+//                                    let tunggu = SKAction.run {
+//                                        self.sudahMandi = true
+//                                    }
+                                    
                                     let sequenceAction = SKAction.sequence([fadeOutAction, removeAction,removeBubble])
-                                    self.soap!.run(sequenceAction)                            }
+                                    
+                                    
+                                    self.soap!.run(sequenceAction)
+                                    }
                                 
                                 lastLoc = self.soap!.position
                             }
@@ -273,13 +292,16 @@ class BathState : GameState {
         
         self.lineAgent?.removeFromParent()
         self.targetVisual?.removeFromParent()
+        self.game.flies?.component(ofType: FlyIntelligenceComponent.self)?.stateMachine.state(forClass: FlyingState.self)?.coheredPet = self.petComponentSprite!
         
-        
-        self.petComponentSprite?.removeAllChildren()
+//        self.petComponentSprite?.removeAllChildren()
         self.soap?.visualAgent?.removeFromParent()
-        self.game.flies?.removeComponent(ofType: FlySpriteComponent.self)
-        self.game.flies?.component(ofType: FlySpriteComponent.self)?.sprite.removeFromParent()
+//        self.game.flies?.removeComponent(ofType: FlySpriteComponent.self)
+//        self.game.flies?.component(ofType: FlyIntelligenceComponent.self)?.stateMachine.state(forClass: FlyingState.self)?.flyComponentSprite?.isHidden = true
+   
 //        self.petComponentSprite?.children.removeAll(where: posit)
+        self.petComponentSprite?.childNode(withName: "overlapArea")?.removeFromParent()
+        removeBubblesWithAnimation()
     }
     
     func gambarRute() {

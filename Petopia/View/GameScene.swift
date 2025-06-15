@@ -100,9 +100,32 @@ class GameScene : SKScene, SKPhysicsContactDelegate {
         let calculatedWidthShop = targetHeightShop * aspectRatioShop
         shop.size = CGSize(width: calculatedWidthShop, height: targetHeightShop)
         self.addChild(shop)
+    
+        let coinBoxTexture = SKTexture(imageNamed: "coin_box")
+        let coinBox = SKSpriteNode(texture: coinBoxTexture)
+        coinBox.position = CGPoint(x: self.frame.minX + 80, y: self.frame.maxY - 100)
+        coinBox.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        coinBox.zPosition = 10000
+        let targetHeightCoinBox: CGFloat = 140
+        let aspectRatioCoinBox = coinBoxTexture.size().width / coinBoxTexture.size().height
+        let calculatedWidthCoinBox = targetHeightCoinBox * aspectRatioCoinBox
+        coinBox.size = CGSize(width: calculatedWidthCoinBox, height: targetHeightCoinBox)
+        
+        let labelCoin = SKLabelNode(text: "100")
+        labelCoin.zPosition = coinBox.zPosition + 10
+        labelCoin.fontColor = SKColor.black
+        labelCoin.fontSize = 25
+        labelCoin.verticalAlignmentMode = .center
+        labelCoin.horizontalAlignmentMode = .left
+        labelCoin.position = CGPoint(x: 0, y: 5)
+        labelCoin.fontName = "SFPro-Black"
+        coinBox.addChild(labelCoin)
+        self.addChild(coinBox)
 
         createInventNodes()
 //        createShopNodes()
+        makeOverlay()
+        
         
         
 //        let inventTexture = SKTexture(imageNamed: "invent")
@@ -127,7 +150,7 @@ class GameScene : SKScene, SKPhysicsContactDelegate {
         createAndShowSquareBoundaryObstacles(scene: self, margin: 0)
         
         
-        let pet = PetEntity(name: "Mamang", type: PetType.tiger,agentSystem: self.agentSystem)
+        let pet = PetEntity(name: "Mamang", type: PetType.tiger,agentSystem: GKComponentSystem(componentClass: GKAgent2D.self), intelligenceSystem: GKComponentSystem(componentClass: PetIntelligenceComponent.self))
         
 //        let texture = skte
         let petSprite = PetAgentNode(scene: self, position: CGPoint(x: frame.midX, y: frame.midY-200), size: CGSize(width: 100, height: 100))
@@ -138,10 +161,10 @@ class GameScene : SKScene, SKPhysicsContactDelegate {
         petSprite.physicsBody?.affectedByGravity = false
         
         pet.addComponent(PetSpriteComponent(sprite: petSprite, size:  CGSize(width: 100, height: 100)))
-        
-        
+//        self.intelligenceSystem = GKComponentSystem(componentClass: PetIntelligenceComponent.self)
         
         pet.addComponent(PetIntelligenceComponent(game: self, pet: pet))
+        self.pet?.agentSystem?.addComponent(petSprite.agent!)
         
         self.pet = pet
         self.petSprite = petSprite
@@ -151,19 +174,21 @@ class GameScene : SKScene, SKPhysicsContactDelegate {
         
         
     
-        self.agentSystem?.addComponent(petSprite.agent!)
+//        self.agentSystem?.addComponent(petSprite.agent!)
         
+        let fly = FlyEntity(agentSystem: GKComponentSystem(componentClass: GKAgent2D.self), intelligenceSystem: GKComponentSystem(componentClass: FlyIntelligenceComponent.self))
         
-        let fly = FlyEntity(agentSystem: self.agentSystem)
-        
-        let flySprite = FlyAgentNode(scene: self, position: CGPoint(x: frame.midX, y: frame.midY), size: CGSize(width: 20, height: 20))
+        let flySprite = FlyAgentNode(scene: self, position: CGPoint(x: (self.petSprite?.position.x)!, y: (self.petSprite?.position.y)!), size: CGSize(width: 20, height: 20))
         fly.addComponent(FlySpriteComponent(sprite: flySprite,size: CGSize(width: 20, height: 20)))
         fly.addComponent(FlyIntelligenceComponent(game: self, fly: fly, coheredPet: self.petSprite!))
         self.flies = fly
+//        self.flies?.removeComponent(ofType: FlySpriteComponent.self)
+//        self.flies?.component(ofType: FlySpriteComponent.self)?.sprite.isHidden = true
         flySprite.zPosition = -1
+        self.flies?.agentSystem?.addComponent(flySprite.agent!)
         
-        self.intelligenceSystem = GKComponentSystem(componentClass: PetIntelligenceComponent.self)
-        self.flyIntelligenceSystem = GKComponentSystem(componentClass: FlyIntelligenceComponent.self)
+//        self.intelligenceSystem = GKComponentSystem(componentClass: PetIntelligenceComponent.self)
+//        self.flyIntelligenceSystem = GKComponentSystem(componentClass: FlyIntelligenceComponent.self)
        
         petSprite.physicsBody?.categoryBitMask = petCategory
         petSprite.physicsBody?.collisionBitMask = ballCategory
@@ -176,7 +201,18 @@ class GameScene : SKScene, SKPhysicsContactDelegate {
         
         self.agentSystem = GKComponentSystem(componentClass: GKAgent2D.self)
         agentSystem?.addComponent(flySprite.agent!)
-        agentSystem?.addComponent(petSprite.agent!)
+//        agentSystem?.addComponent(petSprite.agent!)
+        
+//        self.pet?.agentSystem = self.agentSystem
+        
+        setupStatusBars()
+//
+        
+        self.setStatusFill(for: self.childNode(withName: "hunger_frame")! as! SKSpriteNode, with: self.pet!.hungerLevel)
+        self.setStatusFill(for: self.childNode(withName: "thirst_frame")! as! SKSpriteNode, with: self.pet!.thirstLevel)
+        self.setStatusFill(for: self.childNode(withName: "happiness_frame")! as! SKSpriteNode, with: self.pet!.happinessLevel)
+        self.setStatusFill(for: self.childNode(withName: "energy_frame")! as! SKSpriteNode, with: self.pet!.energyLevel)
+        
         
     }
     
@@ -268,7 +304,6 @@ class GameScene : SKScene, SKPhysicsContactDelegate {
         //        circleShape.zPosition = 1000000
         //        circleShape.position = CGPoint(x: 100, y: 100)
         //        self.scene!.addChild(circleShape)
-        setupStatusBars()
         
 //        let hungerFrameTexture = SKTexture(imageNamed: "hunger_frame")
 //        let hungerFrame = SKSpriteNode(texture: hungerFrameTexture)
@@ -321,7 +356,7 @@ class GameScene : SKScene, SKPhysicsContactDelegate {
 //        background.addChild(cropNode)
 //        addChild(background)
 
-
+//        self.flies?.component(ofType: FlySpriteComponent.self)?.sprite.setHidden()
         
     }
     
@@ -376,9 +411,13 @@ class GameScene : SKScene, SKPhysicsContactDelegate {
         
     }
     
-    
+    var totalTime : TimeInterval = 0
     override func update(_ currentTime: TimeInterval) {
+       print ("jam sekarang: \(currentTime/3600)")
+        if totalTime >= 10{
+//            self.flies?.component(ofType: FlyIntelligenceComponent.self)?.stateMachine.state(forClass: FlyingState.self)?.flyComponentSprite?.isHidden = true
        
+        }
         
         if lastUpdateTime>0 {
             dt = currentTime - lastUpdateTime
@@ -386,15 +425,20 @@ class GameScene : SKScene, SKPhysicsContactDelegate {
         else{
             dt = 0
         }
+        totalTime += dt
         self.lastUpdateTime = currentTime
         
-        self.intelligenceSystem!.update(deltaTime: dt)
-        self.flyIntelligenceSystem!.update(deltaTime: dt)
+//        self.intelligenceSystem!.update(deltaTime: dt)
+//        self.flyIntelligenceSystem!.update(deltaTime: dt)
+        self.flies!.update(deltaTime: dt)
         self.agentSystem!.update(deltaTime: dt)
         self.pet!.update(deltaTime: dt)
-        self.flies!.update(deltaTime: dt)
+       
         self.lastUpdateTime = currentTime
-        
+        self.setStatusFill(for: self.childNode(withName: "hunger_frame")! as! SKSpriteNode, with: self.pet!.hungerLevel)
+        self.setStatusFill(for: self.childNode(withName: "thirst_frame")! as! SKSpriteNode, with: self.pet!.thirstLevel)
+        self.setStatusFill(for: self.childNode(withName: "happiness_frame")! as! SKSpriteNode, with: self.pet!.happinessLevel)
+        self.setStatusFill(for: self.childNode(withName: "energy_frame")! as! SKSpriteNode, with: self.pet!.energyLevel)
        
     }
     
@@ -640,9 +684,9 @@ class GameScene : SKScene, SKPhysicsContactDelegate {
             
             
             let shapeNode = SKShapeNode(rect: rect)
-            shapeNode.strokeColor = color
-            shapeNode.lineWidth = 5
-            shapeNode.fillColor = color  // Semi-transparent fill
+//            shapeNode.strokeColor = color
+            shapeNode.lineWidth = 0
+//            shapeNode.fillColor = color  // Semi-transparent fill
             //            shapeNode.physicsBody = SKPhysicsBody(rectangleOf: rect.size)
             shapeNode.physicsBody = SKPhysicsBody(edgeLoopFrom: rect)
                         
@@ -665,7 +709,7 @@ class GameScene : SKScene, SKPhysicsContactDelegate {
         //        let rightRect = CGRect(x: frame.maxX, y: frame.minY, width: margin, height: frame.height)
         
         
-        let topRect = CGRect(x: self.frame.minX, y: self.frame.maxY-400 , width: self.frame.width, height: margin)
+        let topRect = CGRect(x: self.frame.minX, y: self.frame.midY , width: self.frame.width, height: margin)
         let bottomRect = CGRect(x: self.frame.minX - margin, y: self.frame.minY-margin+50, width: self.frame.width, height: margin)
         let leftRect = CGRect(x: self.frame.minX , y: self.frame.minY, width: margin, height: frame.height*2 )
         let rightRect = CGRect(x: self.frame.maxX - margin, y: self.frame.minY, width: margin, height: frame.height*2)
@@ -681,13 +725,18 @@ class GameScene : SKScene, SKPhysicsContactDelegate {
         return obstacles
     }
     
+    func setupCoinBox () {
+        let coinBox = SKSpriteNode(imageNamed: "coin_box")
+    }
+    
     func setupStatusBars() {
         let frameNames = ["hunger_frame", "thirst_frame", "happiness_frame", "energy_frame"]
+        let warna = [SKColor.systemOrange,SKColor.systemCyan, SKColor.systemRed, SKColor.systemYellow]
         let frameSize = CGSize(width: 43, height: 40)
-        let cornerRadius: CGFloat = 10.0
-        let spacing: CGFloat = 55 // Jarak antar status bar
+        let cornerRadius: CGFloat = 4
+        let spacing: CGFloat = 60 // Jarak antar status bar
         let startYPosition = frame.maxY - 100 // Posisi Y awal untuk status bar pertama
-        let startXPosition = frame.midX - CGFloat(frameNames.count - 1) * spacing / 2 // Menghitung posisi X awal agar terpusat
+        let startXPosition = frame.maxX - (CGFloat(frameNames.count) * spacing - spacing/3) // Menghitung posisi X awal agar terpusat
 
 //        for (index, frameName) in frameNames.enumerated() {
 //            // Memuat texture dan membuat sprite node untuk frame
@@ -718,17 +767,18 @@ class GameScene : SKScene, SKPhysicsContactDelegate {
         for (index, frameName) in frameNames.enumerated() {
             let frameTexture = SKTexture(imageNamed: frameName)
             let frameNode = SKSpriteNode(texture: frameTexture)
-            frameNode.size = CGSize(width: 50, height: 50)
+            frameNode.size = CGSize(width: 60, height: 60)
             frameNode.position = CGPoint(x: startXPosition + CGFloat(index) * spacing, y: startYPosition)
             frameNode.zPosition = 1000000000
-            frameNode.name = "nodenya"
+            frameNode.name = frameNames[index]
 
             // Membuat SKShapeNode untuk fill
-            let statusFill = SKShapeNode(rectOf: CGSize(width: 40, height: 40), cornerRadius: cornerRadius)
-            statusFill.fillColor = SKColor.green
+            let statusFill = SKShapeNode(rectOf: CGSize(width: 42, height: 42), cornerRadius: cornerRadius)
+            statusFill.fillColor = warna[index]
             statusFill.lineWidth = 0
-            statusFill.position = CGPoint(x: 0, y: 0)
-            statusFill.zPosition = -1
+//            statusFill.position = CGPoint(x: 0, y: -(frameNode!.size.height/2 - (statusFill!.frame.size + 10)/2))
+            statusFill.position = CGPoint(x: 0, y: 4 - ((frameNode.size.height - 10)/2 - statusFill.frame.height/2 ) )
+            statusFill.zPosition = -10
             statusFill.name = "statusFill"  // Menambahkan nama untuk memudahkan pencarian node ini nanti
 
             // Menambahkan statusFill sebagai child dari frameNode
@@ -746,45 +796,50 @@ class GameScene : SKScene, SKPhysicsContactDelegate {
 
         // Mengatur skala x dari statusFill berdasarkan status
         frameNode.children.forEach { node in
-            if let statusNode = node as? SKShapeNode {
-                statusNode.xScale = normalizedStatus
+            if var statusNode = node as? SKShapeNode {
+                statusNode.yScale = normalizedStatus
+                statusNode.position = CGPoint(x: 0, y: 4 - ((frameNode.size.height - 10)/2 - statusNode.frame.height/2 ) )
             }
         }
 
         // Mengubah warna berdasarkan status
         let statusFill = frameNode.children.compactMap { $0 as? SKShapeNode }.first
-        statusFill?.fillColor = colorForStatus(status)
+//        statusFill?.fillColor = colorForStatus(status)
     }
 
-    // Fungsi untuk menentukan warna berdasarkan status
-    func colorForStatus(_ status: Int) -> SKColor {
-        switch status {
-        case 0..<25:
-            return SKColor.red
-        case 25..<50:
-            return SKColor.orange
-        case 50..<75:
-            return SKColor.yellow
-        case 75...100:
-            return SKColor.green
-        default:
-            return SKColor.gray
-        }
-    }
-
+//    // Fungsi untuk menentukan warna berdasarkan status
+//    func colorForStatus(_ status: Int) -> SKColor {
+//        switch status {
+//        case 0..<25:
+//            return SKColor.red
+//        case 25..<50:
+//            return SKColor.orange
+//        case 50..<75:
+//            return SKColor.yellow
+//        case 75...100:
+//            return SKColor.green
+//        default:
+//            return SKColor.gray
+//        }
+//    }
+    
+    var inventTextureClose : SKTexture?
+    var inventTextureOpen : SKTexture?
     
     func createInventNodes() {
-        let inventTexture = SKTexture(imageNamed: "invent")
-        let invent = SKSpriteNode(texture: inventTexture)
+        self.inventTextureClose = SKTexture(imageNamed: "invent_close")
+        self.inventTextureOpen = SKTexture(imageNamed: "invent_open")
+        let invent = SKSpriteNode(texture: inventTextureClose)
 //        invent.position = CGPoint(x: self.frame.minX + 30 , y: self.frame.minY + 40)
         invent.position = CGPoint (x: 0,y: 0)
         invent.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         invent.zPosition = 10000
         let targetHeightInvent: CGFloat = 120
-        let aspectRatioInvent = inventTexture.size().width / inventTexture.size().height
+        let aspectRatioInvent = inventTextureClose!.size().width / inventTextureClose!.size().height
         let calculatedWidthInvent = targetHeightInvent * aspectRatioInvent
         invent.size = CGSize(width: calculatedWidthInvent, height: targetHeightInvent)
         invent.name = "invent"
+        
 
         // Membuat mainNode untuk menyimpan semua node
         let mainNode = SKSpriteNode()
@@ -800,30 +855,35 @@ class GameScene : SKScene, SKPhysicsContactDelegate {
         // Membuat container untuk node tambahan
         let additionalNodesContainer = SKNode()
     additionalNodesContainer.name = "additionalNodesContainer"
+        additionalNodesContainer.zPosition = invent.zPosition + 1
         mainNode.addChild(additionalNodesContainer)
         additionalNodesContainer.isHidden = true
         // Menambahkan empat node secara vertikal di atas invent
-        let spacing: CGFloat = 25
+        let spacing: CGFloat = 10
         var nextNodePositionY = invent.size.height / 2 + 10 + spacing / 2
 
-        var text = ["eat","ball","wand","bath"]
-        var imgText = ["Chicken_1", "ball", "wand", "soap"]
+        var text = ["food","ball","wand","bath"]
+        var imgText = ["butt_eat", "butt_ball", "butt_wand", "butt_soap"]
         
         self.menu=text
+        self.menu.append("eat")
+        self.menu.append("drink")
+        self.menu.append("close")
+
         
         for i in 1...text.count{
             let texture = SKTexture(imageNamed: imgText[i-1])
-            let belakang = SKShapeNode(circleOfRadius: 30)
-            belakang.fillColor = SKColor.green
+//            let belakang = SKShapeNode(circleOfRadius: 30)
+//            belakang.fillColor = SKColor.green
             
             
-            let node = SKSpriteNode(texture: texture, size: CGSize(width: 50, height: 50))
+            let node = SKSpriteNode(texture: texture, size: CGSize(width: 70, height: 70))
 //            let node = SKSpriteNode(color: SKColor.blue, size: CGSize(width: 30, height: 30))
             node.position = CGPoint(x: 0, y: nextNodePositionY)
             node.zPosition = invent.zPosition - 1
-            belakang.zPosition = node.zPosition - 10000
+//            belakang.zPosition = node.zPosition - 10000
             additionalNodesContainer.addChild(node)
-            node.addChild(belakang)
+//            node.addChild(belakang)
             node.name = text[i-1]
             nextNodePositionY += node.size.height + spacing
             
@@ -831,9 +891,25 @@ class GameScene : SKScene, SKPhysicsContactDelegate {
         }
     }
     func toggleAdditionalNodesVisibility() {
-        if let mainNode = self.childNode(withName: "mainNode"),
+        if let mainNode = self.childNode(withName: "mainNode"), let inventNode = mainNode.childNode(withName: "invent") as? SKSpriteNode,
            let additionalNodesContainer = mainNode.childNode(withName: "additionalNodesContainer") {
+            
             additionalNodesContainer.isHidden = !additionalNodesContainer.isHidden
+            if additionalNodesContainer.isHidden {
+                inventNode.texture = self.inventTextureClose
+            }
+            else{
+                inventNode.texture = self.inventTextureOpen
+            }
+        }
+    }
+    
+    func toggleOverlay() {
+        if let mainNode = self.childNode(withName: "overlay")
+        {
+            
+            mainNode.isHidden = !mainNode.isHidden
+            /*toggleAdditionalNodesVisibility*/()
         }
     }
     
@@ -883,10 +959,19 @@ class GameScene : SKScene, SKPhysicsContactDelegate {
         print("Switching to state for action: \(actionName)")
         // Tambahkan logika untuk berpindah state di sini, misalnya menggunakan state machine atau pengaturan scene
         switch actionName {
-        case "eat":
-            self.pet?.component(ofType: PetIntelligenceComponent.self)?.stateMachine.enter(EatingState.self)
+        case "food":
+            toggleOverlay()
             toggleAdditionalNodesVisibility()
 
+            break
+            
+        case "close":
+            toggleOverlay()
+            
+        case "eat":
+            toggleOverlay()
+            self.pet?.component(ofType: PetIntelligenceComponent.self)?.stateMachine.enter(EatingState.self)
+//            toggleOverlay()
             break
         case "ball":
             self.pet?.component(ofType: PetIntelligenceComponent.self)?.stateMachine.enter(PlayingBallState.self)
@@ -909,6 +994,81 @@ class GameScene : SKScene, SKPhysicsContactDelegate {
 
             break
         }
+    }
+    
+    func makeOverlay(){
+        let overlayTexture = SKTexture(imageNamed: "overlay")
+        let overlay = SKSpriteNode(texture: overlayTexture)
+        overlay.position = CGPoint(x: self.frame.midX , y: self.frame.midY)
+        overlay.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        overlay.zPosition = 100000
+        let targetHeightOverlay: CGFloat = self.frame.size.height * 0.8
+        let aspectRatioOverlay = overlayTexture.size().width / overlayTexture.size().height
+        let calculatedWidthOverlay = targetHeightOverlay * aspectRatioOverlay
+        overlay.size = CGSize(width: calculatedWidthOverlay, height: targetHeightOverlay)
+        overlay.name = "overlay"
+        self.addChild(overlay)
+        
+        let closeButtonTexture = SKTexture(imageNamed: "butt_close")
+        let closeButton = SKSpriteNode(texture: closeButtonTexture)
+        closeButton.position = CGPoint(x: overlay.size.width/3, y:overlay.size.height/2.8)
+        closeButton.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        closeButton.zPosition = 1000000
+        let targetHeightcloseButton: CGFloat = overlay.size.height * 0.1
+        let aspectRatiocloseButton = closeButtonTexture.size().width / closeButtonTexture.size().height
+        let calculatedWidthcloseButton = targetHeightcloseButton * aspectRatiocloseButton
+        closeButton.size = CGSize(width: calculatedWidthcloseButton, height: targetHeightcloseButton)
+        closeButton.name = "close"
+        overlay.addChild(closeButton)
+        
+        let spacing: CGFloat = 30
+        var nextNodePositionY : CGFloat = 140 + spacing
+
+        var text = ["eat","ball","wand","bath"]
+        var imgText = ["chicken", "sausage", "ham", "bacon", "apple" ,"banana", "pineapple"]
+        
+      
+        var nextNodePositionX : CGFloat =
+        -(2*70 + 35 + 2*spacing/3 )/2
+        var counter = 0
+        for i in 1...(imgText.count)/3 + 1{
+            
+            
+            for j in 1...3 {
+                
+               
+                print(counter)
+                
+                let texture = SKTexture(imageNamed: imgText[(i-1)*3 + j-1 ])
+                
+                let targetWidth: CGFloat = 70
+                let aspectRatio = texture.size().height/texture.size().width
+                let calculatedHeight = targetWidth*aspectRatio
+                
+                let node = SKSpriteNode(texture: texture, size: CGSize(width: targetWidth, height: calculatedHeight))
+                //            let node = SKSpriteNode(color: SKColor.blue, size: CGSize(width: 30, height: 30))
+                node.position = CGPoint(x: nextNodePositionX, y: nextNodePositionY)
+                node.zPosition = overlay.zPosition + 1
+                //            belakang.zPosition = node.zPosition - 10000
+                node.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+                overlay.addChild(node)
+                //            node.addChild(belakang)
+                node.name = text[0]
+                nextNodePositionX += spacing + 70
+                counter += 1
+                if counter >= imgText.count {
+                    break
+                }
+                
+            }
+            nextNodePositionX =
+            -(2*70 + 35 + 2*spacing/3 )/2
+            
+            nextNodePositionY -= 70 + spacing
+        }
+        
+        overlay.isHidden = true
+        
     }
 
 }

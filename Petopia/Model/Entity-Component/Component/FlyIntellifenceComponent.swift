@@ -30,7 +30,7 @@ class FlyIntelligenceComponent : GKComponent{
     }
     
     override func update(deltaTime seconds: TimeInterval) {
-        print("Fly Intel Component updated")
+//        print("Fly Intel Component updated")
         self.stateMachine.update(deltaTime: seconds)
     }
     

@@ -22,4 +22,5 @@ class PetSpriteComponent : GKComponent{
         fatalError("init(coder:) has not been implemented")
     }
     
+    
 }

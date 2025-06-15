@@ -58,7 +58,8 @@ class BallAgentNode : SKSpriteNode, GKAgentDelegate{
 //        self.physicsBody = SKPhysicsBody(texture: self.texture!, size: self.size)
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/2-10)
         self.name = "ball"
-        self.physicsBody?.restitution = 0.7
+        self.physicsBody?.restitution = 1
+        self.physicsBody?.friction = 5
         self.physicsBody?.categoryBitMask = ballCategory
         self.physicsBody?.collisionBitMask = petCategory | wallCategory
         self.physicsBody?.contactTestBitMask = petCategory
@@ -71,7 +72,7 @@ class BallAgentNode : SKSpriteNode, GKAgentDelegate{
         agentNode.run(SKAction.colorize(with: SKColor.black, colorBlendFactor: 100, duration: 1))
         agentNode.zPosition = -1000
         self.visualAgent = agentNode
-        scene.addChild(agentNode)
+//        scene.addChild(agentNode)
        
         
 //
@@ -92,9 +93,16 @@ class BallAgentNode : SKSpriteNode, GKAgentDelegate{
     }
     
     func agentDidUpdate(_ agent: GKAgent) {
+        
+        
+        var sizeBaru = CGSize(width: 50 - self.position.y/400 * 20 + 10 , height: 50 - self.position.y/400 * 20 + 10 )
+        self.scale(to: sizeBaru)
+        
         self.visualAgent?.position = self.position
         self.visualAgent?.size = self.size
         self.visualAgent?.texture = self.texture
+        
+        
     }
     
     

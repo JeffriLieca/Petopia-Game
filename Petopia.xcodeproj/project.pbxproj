@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		487A413E2C0D5C8800E9039A /* PetStateMachineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487A413D2C0D5C8800E9039A /* PetStateMachineComponent.swift */; };
-		487A41402C0D5F9600E9039A /* PetNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487A413F2C0D5F9600E9039A /* PetNode.swift */; };
-		487A41422C0D699700E9039A /* Toy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487A41412C0D699700E9039A /* Toy.swift */; };
-		487A41442C0D69FF00E9039A /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487A41432C0D69FF00E9039A /* Drink.swift */; };
 		4899B6242C06DAAA00481698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4899B6232C06DAAA00481698 /* AppDelegate.swift */; };
 		4899B6262C06DAAB00481698 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4899B6252C06DAAB00481698 /* GameScene.sks */; };
 		4899B6282C06DAAB00481698 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4899B6272C06DAAB00481698 /* Actions.sks */; };
@@ -18,9 +14,6 @@
 		4899B62F2C06DAAB00481698 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4899B62E2C06DAAB00481698 /* Base */; };
 		4899B6312C06DAAC00481698 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4899B6302C06DAAC00481698 /* Assets.xcassets */; };
 		4899B6342C06DAAC00481698 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4899B6332C06DAAC00481698 /* Base */; };
-		4899B68C2C0819DE00481698 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4899B68B2C0819DE00481698 /* Pet.swift */; };
-		4899B68E2C081F3D00481698 /* PetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4899B68D2C081F3D00481698 /* PetController.swift */; };
-		4899B6A52C0836DB00481698 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4899B6A42C0836DB00481698 /* Food.swift */; };
 		D952B0142C0E62EF0074C130 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0132C0E62EF0074C130 /* GameScene.swift */; };
 		D952B01B2C0E67160074C130 /* PetEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B01A2C0E67160074C130 /* PetEntity.swift */; };
 		D952B01D2C0E69990074C130 /* FlyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B01C2C0E69980074C130 /* FlyEntity.swift */; };
@@ -31,12 +24,10 @@
 		D952B0272C0E70090074C130 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0262C0E70090074C130 /* GameState.swift */; };
 		D952B02A2C0E70750074C130 /* WalkingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0292C0E70750074C130 /* WalkingState.swift */; };
 		D952B02C2C0E74A30074C130 /* Fly_images.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D952B02B2C0E74A30074C130 /* Fly_images.atlas */; };
-		D952B0302C0E74F50074C130 /* PenguinImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D952B02F2C0E74F40074C130 /* PenguinImages.atlas */; };
 		D952B0322C0E77BF0074C130 /* PetIntelligenceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0312C0E77BF0074C130 /* PetIntelligenceComponent.swift */; };
 		D952B0342C0E79FC0074C130 /* FlyIntellifenceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0332C0E79FC0074C130 /* FlyIntellifenceComponent.swift */; };
 		D952B0372C0E7A380074C130 /* FlyingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0362C0E7A380074C130 /* FlyingState.swift */; };
 		D952B0392C0EA2080074C130 /* SeekingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0382C0EA2080074C130 /* SeekingState.swift */; };
-		D952B03D2C0EBDE00074C130 /* Mang_mang.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D952B03C2C0EBDE00074C130 /* Mang_mang.atlas */; };
 		D952B03F2C0EBFF50074C130 /* SmokeParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = D952B03E2C0EBFB00074C130 /* SmokeParticle.sks */; };
 		D952B0412C0FC1990074C130 /* PlayingBallState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0402C0FC1990074C130 /* PlayingBallState.swift */; };
 		D952B0432C0FC3B00074C130 /* BallAgentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952B0422C0FC3B00074C130 /* BallAgentNode.swift */; };
@@ -55,6 +46,8 @@
 		D952B05E2C126D4A0074C130 /* magic.sks in Resources */ = {isa = PBXBuildFile; fileRef = D952B05D2C126D4A0074C130 /* magic.sks */; };
 		D952B0B92C1277930074C130 /* LovePop.sks in Resources */ = {isa = PBXBuildFile; fileRef = D952B0B82C1277930074C130 /* LovePop.sks */; };
 		D952B0BB2C1277F50074C130 /* LoveFire.sks in Resources */ = {isa = PBXBuildFile; fileRef = D952B0BA2C1277F50074C130 /* LoveFire.sks */; };
+		D9BFAEDE2C167CEF007E8E56 /* DeadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BFAEDD2C167CEF007E8E56 /* DeadState.swift */; };
+		D9BFAF172C17B346007E8E56 /* DrinkingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BFAF162C17B346007E8E56 /* DrinkingState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -71,10 +64,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		487A413D2C0D5C8800E9039A /* PetStateMachineComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetStateMachineComponent.swift; sourceTree = "<group>"; };
-		487A413F2C0D5F9600E9039A /* PetNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetNode.swift; sourceTree = "<group>"; };
-		487A41412C0D699700E9039A /* Toy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toy.swift; sourceTree = "<group>"; };
-		487A41432C0D69FF00E9039A /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		4899B6202C06DAAA00481698 /* Petopia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Petopia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4899B6232C06DAAA00481698 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4899B6252C06DAAB00481698 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -83,9 +72,6 @@
 		4899B62E2C06DAAB00481698 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4899B6302C06DAAC00481698 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4899B6332C06DAAC00481698 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		4899B68B2C0819DE00481698 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
-		4899B68D2C081F3D00481698 /* PetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetController.swift; sourceTree = "<group>"; };
-		4899B6A42C0836DB00481698 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		D952B0132C0E62EF0074C130 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		D952B01A2C0E67160074C130 /* PetEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetEntity.swift; sourceTree = "<group>"; };
 		D952B01C2C0E69980074C130 /* FlyEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlyEntity.swift; sourceTree = "<group>"; };
@@ -96,12 +82,10 @@
 		D952B0262C0E70090074C130 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		D952B0292C0E70750074C130 /* WalkingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingState.swift; sourceTree = "<group>"; };
 		D952B02B2C0E74A30074C130 /* Fly_images.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Fly_images.atlas; sourceTree = "<group>"; };
-		D952B02F2C0E74F40074C130 /* PenguinImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PenguinImages.atlas; sourceTree = "<group>"; };
 		D952B0312C0E77BF0074C130 /* PetIntelligenceComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetIntelligenceComponent.swift; sourceTree = "<group>"; };
 		D952B0332C0E79FC0074C130 /* FlyIntellifenceComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlyIntellifenceComponent.swift; sourceTree = "<group>"; };
 		D952B0362C0E7A380074C130 /* FlyingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlyingState.swift; sourceTree = "<group>"; };
 		D952B0382C0EA2080074C130 /* SeekingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekingState.swift; sourceTree = "<group>"; };
-		D952B03C2C0EBDE00074C130 /* Mang_mang.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Mang_mang.atlas; sourceTree = "<group>"; };
 		D952B03E2C0EBFB00074C130 /* SmokeParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SmokeParticle.sks; sourceTree = "<group>"; };
 		D952B0402C0FC1990074C130 /* PlayingBallState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingBallState.swift; sourceTree = "<group>"; };
 		D952B0422C0FC3B00074C130 /* BallAgentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallAgentNode.swift; sourceTree = "<group>"; };
@@ -122,6 +106,8 @@
 		D952B0B82C1277930074C130 /* LovePop.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LovePop.sks; sourceTree = "<group>"; };
 		D952B0BA2C1277F50074C130 /* LoveFire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LoveFire.sks; sourceTree = "<group>"; };
 		D952B0C02C127BCF0074C130 /* Widget_PetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Widget_PetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9BFAEDD2C167CEF007E8E56 /* DeadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadState.swift; sourceTree = "<group>"; };
+		D9BFAF162C17B346007E8E56 /* DrinkingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkingState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,7 +161,6 @@
 				4899B62D2C06DAAB00481698 /* Main.storyboard */,
 				4899B6302C06DAAC00481698 /* Assets.xcassets */,
 				4899B6802C08150500481698 /* Resources */,
-				4899B6852C08159300481698 /* Helper */,
 				4899B6882C0816C400481698 /* Model */,
 				4899B6862C08159D00481698 /* View */,
 				4899B6872C0815A500481698 /* Controller */,
@@ -189,8 +174,6 @@
 				D952B0582C126AE80074C130 /* Audio */,
 				D952B04A2C10639E0074C130 /* Chicken.atlas */,
 				D952B0442C0FFB5D0074C130 /* Mangeak.atlas */,
-				D952B03C2C0EBDE00074C130 /* Mang_mang.atlas */,
-				D952B02F2C0E74F40074C130 /* PenguinImages.atlas */,
 				D952B03E2C0EBFB00074C130 /* SmokeParticle.sks */,
 				D952B02B2C0E74A30074C130 /* Fly_images.atlas */,
 				D952B0502C1224AF0074C130 /* SoapParticle.sks */,
@@ -203,20 +186,12 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		4899B6852C08159300481698 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helper;
-			sourceTree = "<group>";
-		};
 		4899B6862C08159D00481698 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				4899B6252C06DAAB00481698 /* GameScene.sks */,
 				D952B0132C0E62EF0074C130 /* GameScene.swift */,
 				4899B6272C06DAAB00481698 /* Actions.sks */,
-				487A413F2C0D5F9600E9039A /* PetNode.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -225,7 +200,6 @@
 			isa = PBXGroup;
 			children = (
 				4899B62B2C06DAAB00481698 /* GameViewController.swift */,
-				4899B68D2C081F3D00481698 /* PetController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -236,11 +210,6 @@
 				D952B0172C0E63630074C130 /* State */,
 				D952B0162C0E63530074C130 /* SpriteNode */,
 				D952B0152C0E63490074C130 /* Entity-Component */,
-				4899B68B2C0819DE00481698 /* Pet.swift */,
-				4899B6A42C0836DB00481698 /* Food.swift */,
-				487A413D2C0D5C8800E9039A /* PetStateMachineComponent.swift */,
-				487A41412C0D699700E9039A /* Toy.swift */,
-				487A41432C0D69FF00E9039A /* Drink.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -304,8 +273,10 @@
 				D952B04C2C11F6630074C130 /* BathState.swift */,
 				D952B0402C0FC1990074C130 /* PlayingBallState.swift */,
 				D952B0462C103C640074C130 /* EatingState.swift */,
+				D9BFAF162C17B346007E8E56 /* DrinkingState.swift */,
 				D952B0542C1239820074C130 /* PlayingWandState.swift */,
 				D952B0382C0EA2080074C130 /* SeekingState.swift */,
+				D9BFAEDD2C167CEF007E8E56 /* DeadState.swift */,
 			);
 			path = Pet;
 			sourceTree = "<group>";
@@ -433,8 +404,6 @@
 				D952B04B2C10639E0074C130 /* Chicken.atlas in Resources */,
 				D952B05C2C126D2D0074C130 /* Love.sks in Resources */,
 				4899B62F2C06DAAB00481698 /* Base in Resources */,
-				D952B03D2C0EBDE00074C130 /* Mang_mang.atlas in Resources */,
-				D952B0302C0E74F50074C130 /* PenguinImages.atlas in Resources */,
 				D952B0452C0FFB5D0074C130 /* Mangeak.atlas in Resources */,
 				D952B0532C1224AF0074C130 /* Assets.xcassets in Resources */,
 				D952B05E2C126D4A0074C130 /* magic.sks in Resources */,
@@ -469,10 +438,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				487A41402C0D5F9600E9039A /* PetNode.swift in Sources */,
-				4899B68E2C081F3D00481698 /* PetController.swift in Sources */,
-				4899B68C2C0819DE00481698 /* Pet.swift in Sources */,
 				D952B0432C0FC3B00074C130 /* BallAgentNode.swift in Sources */,
+				D9BFAEDE2C167CEF007E8E56 /* DeadState.swift in Sources */,
 				D952B0392C0EA2080074C130 /* SeekingState.swift in Sources */,
 				D952B0492C103CC60074C130 /* FoodAgentNode.swift in Sources */,
 				D952B0572C123A920074C130 /* WandAgentNode.swift in Sources */,
@@ -482,20 +449,17 @@
 				D952B01B2C0E67160074C130 /* PetEntity.swift in Sources */,
 				4899B62C2C06DAAB00481698 /* GameViewController.swift in Sources */,
 				D952B0232C0E6E690074C130 /* PetSpriteComponent.swift in Sources */,
-				487A413E2C0D5C8800E9039A /* PetStateMachineComponent.swift in Sources */,
 				D952B01D2C0E69990074C130 /* FlyEntity.swift in Sources */,
 				D952B04F2C11FBD70074C130 /* SoapAgentNode.swift in Sources */,
 				D952B0412C0FC1990074C130 /* PlayingBallState.swift in Sources */,
 				D952B0252C0E6FC00074C130 /* FlySpriteComponent.swift in Sources */,
 				D952B0472C103C640074C130 /* EatingState.swift in Sources */,
-				487A41422C0D699700E9039A /* Toy.swift in Sources */,
 				D952B0342C0E79FC0074C130 /* FlyIntellifenceComponent.swift in Sources */,
 				D952B0552C1239820074C130 /* PlayingWandState.swift in Sources */,
 				D952B02A2C0E70750074C130 /* WalkingState.swift in Sources */,
-				4899B6A52C0836DB00481698 /* Food.swift in Sources */,
 				D952B0212C0E6D330074C130 /* FlyAgentNode.swift in Sources */,
+				D9BFAF172C17B346007E8E56 /* DrinkingState.swift in Sources */,
 				D952B0142C0E62EF0074C130 /* GameScene.swift in Sources */,
-				487A41442C0D69FF00E9039A /* Drink.swift in Sources */,
 				D952B0272C0E70090074C130 /* GameState.swift in Sources */,
 				4899B6242C06DAAA00481698 /* AppDelegate.swift in Sources */,
 				D952B01F2C0E69E20074C130 /* PetAgentNode.swift in Sources */,
@@ -663,6 +627,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J44YP99CCP;
@@ -680,8 +645,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = team13.Petopia;
+				PRODUCT_BUNDLE_IDENTIFIER = com.petopia.jepri;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -695,6 +661,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J44YP99CCP;
@@ -712,8 +679,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = team13.Petopia;
+				PRODUCT_BUNDLE_IDENTIFIER = com.petopia.jepri;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

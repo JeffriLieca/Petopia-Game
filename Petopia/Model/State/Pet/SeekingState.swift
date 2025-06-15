@@ -118,7 +118,7 @@ class SeekingState : GameState {
                         self.petComponentSprite!.agent!.behavior!.setWeight(0, for: self.stopGoal)
         }
         else {
-            print("berhenti")
+//            print("berhenti")
                         self.petComponentSprite!.agent!.behavior!.setWeight(0, for: self.seekGoal!)
                         self.petComponentSprite!.agent!.behavior!.setWeight(100, for: self.stopGoal)
         }

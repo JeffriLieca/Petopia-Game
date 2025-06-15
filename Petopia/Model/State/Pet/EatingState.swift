@@ -74,19 +74,22 @@ class EatingState : GameState {
         self.petComponentSprite!.agent!.speed = 50
         self.petComponentSprite!.agent!.behavior!.setWeight(100, for: GKGoal(toSeekAgent: (self.food?.agent!)!))
         
-        gambarRute()
+//        gambarRute()
 
         
 //        setDrawTrails(draw: true)
 //        self.petComponentSprite?.agent?.behavior?.removeAllGoals()
 //        self.petComponentSprite?.agent = GKAgent2D()
         
-        self.petComponentSprite?.physicsBody?.isDynamic = false
-        self.petComponentSprite?.physicsBody?.isResting = true
-        self.petComponentSprite?.physicsBody?.collisionBitMask=0
+//        self.petComponentSprite?.physicsBody?.isDynamic = false
+//        self.petComponentSprite?.physicsBody?.isResting = true
+//        self.petComponentSprite?.physicsBody?.collisionBitMask=0
         self.food?.physicsBody?.collisionBitMask = 0
+        self.food?.physicsBody?.categoryBitMask = 0
         self.food?.physicsBody?.isDynamic = false
         self.food?.physicsBody?.isResting = true
+        self.petComponentSprite?.setDiem(diem: false)
+
     
        
 //        self.petComponentSprite?.position = self.food!.position
@@ -144,18 +147,22 @@ class EatingState : GameState {
         //            self.petComponentSprite?.run(moveAction)
         //
         //        }
-        print("distance to move : \(distanceToMove)")
+//        print("distance to move : \(distanceToMove)")
         
         if !ubah {
             if distanceToMove <= 1 {
                 self.petComponentSprite?.position = CGPoint(x: (self.food?.position.x)!, y: (self.food?.position.y)! + 30)
                 self.petComponentSprite?.setDiem(diem: true)
                 self.petComponentSprite!.setDrawTrails(draw: false)                //                self.entity.component(ofType: PetIntelligenceComponent.self)?.stateMachine.enter(EatingState.self)
+//                self.game.flies?.component(ofType: FlyIntelligenceComponent.self)?.stateMachine.state(forClass: FlyingState.self)?.flyComponentSprite?.setHidden()
+                self.game.flies?.component(ofType: FlyIntelligenceComponent.self)?.stateMachine.enter(FlyingState.self)
+//                self.flyComponentSprite?.setHidden()
+                
                 ubah = true
                 
             }
             else if distanceToMove <= 50 {
-                let moveAction = SKAction.move(to: CGPoint(x: (self.food?.position.x)!, y: (self.food?.position.y)! + 30), duration: 1)
+                let moveAction = SKAction.move(to: CGPoint(x: (self.food?.position.x)!, y: (self.food?.position.y)! + 30), duration: 0.02 * distanceToMove)
                 self.petComponentSprite?.run(moveAction)
                 self.petComponentSprite?.setDiem(diem: true)
                 totalTime+=seconds
@@ -254,6 +261,13 @@ class EatingState : GameState {
         
         self.lineAgent?.removeFromParent()
         self.targetVisual?.removeFromParent()
+        
+        self.game.setStatusFill(for: self.game.childNode(withName: "hunger_frame")! as! SKSpriteNode, with: self.game.pet!.hungerLevel)
+//        self.entity  = self.entity as! PetEntity
+//        self.entity.hungerLevel += 20
+        if self.keluar {
+            self.game.pet?.tambahHunger(tambah: 20)
+        }
     }
     
     func gambarRute() {

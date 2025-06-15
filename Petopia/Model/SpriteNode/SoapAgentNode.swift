@@ -77,7 +77,7 @@ class SoapAgentNode : SKSpriteNode, GKAgentDelegate{
         agentNode.run(SKAction.colorize(with: SKColor.black, colorBlendFactor: 100, duration: 1))
         agentNode.zPosition = -1000
         self.visualAgent = agentNode
-        scene.addChild(agentNode)
+//        scene.addChild(agentNode)
        
         
 //

@@ -34,22 +34,23 @@ class FlyingState : GameState {
         self.flyComponentSprite!.agent!.maxAcceleration = 50
         self.flyComponentSprite!.agent!.mass = 0.2
         self.flyComponentSprite!.agent!.behavior = GKBehavior()
+        self.flyComponentSprite?.agent?.position = SIMD2(Float(self.coheredPet.position.x), Float(self.coheredPet.position.y))
 //        self.flyComponentSprite!.agent?.behavior = GKBehavior(goal: GKGoal(toWander: 10), weight: 1)
 //        self.flyComponentSprite!.agent?.behavior?.setWeight(10, for: GKGoal(toWander: 10))
-        self.flyComponentSprite!.agent?.behavior?.setWeight(20, for: GKGoal(toCohereWith: [(self.coheredPet.agent!)], maxDistance: 10000, maxAngle: Float(Double.pi)))
+        self.flyComponentSprite!.agent?.behavior?.setWeight(100, for: GKGoal(toCohereWith: [(self.coheredPet.agent!)], maxDistance: 10000, maxAngle: Float(Double.pi)))
     }
     
     
     override func update(deltaTime seconds: TimeInterval) {
         
-        print("Fly agent point : \(self.flyComponentSprite?.agent?.position)")
+        print("Fly agent point : \(self.flyComponentSprite!.agent!.position)")
         print("Cohered agent point : \(self.coheredPet.position)")
         
         self.flyComponentSprite!.agent?.update(deltaTime: seconds)
         
         self.flyComponentSprite!.zPosition = -(self.flyComponentSprite?.position.y)!
        
-      
+        setAgent()
         
         self.updateTime += seconds
         if (updateTime >= 30){
@@ -57,10 +58,17 @@ class FlyingState : GameState {
 //            print("reset")
            setAgent()
         }
+        self.game.flies?.component(ofType: FlySpriteComponent.self)?.SetHidden(hidden: self.game.pet!.hygieneLevel)
+        
+            
+        
     }
     
     override func didEnter(from previousState: GKState?) {
         setAgent()
+//        self.flyComponentSprite!.agent?.behavior?.setWeight(100, for: GKGoal(toCohereWith: [(self.coheredPet.agent!)], maxDistance: 10000, maxAngle: Float(Double.pi)))
+//        self.flyComponentSprite?.isHidden = true
+//        self.flyComponentSprite?.setHidden()
     }
 }
 

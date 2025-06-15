@@ -98,7 +98,6 @@ class PlayingBallState : GameState {
         self.petComponentSprite!.agent!.speed = 50
         self.seekGoal = GKGoal(toSeekAgent: self.ball!.agent!)
         self.petComponentSprite!.agent!.behavior!.setWeight(100, for: self.seekGoal!)
-        
 //        self.petComponentSprite!.agent!.behavior?.setWeight(100, for: GKGoal(toAvoid: self.obstacle!, maxPredictionTime: 10))
         
        
@@ -107,12 +106,13 @@ class PlayingBallState : GameState {
      
         
         
-       
+       totalTime = 0
+//        self.game.flies?.component(ofType: FlySpriteComponent.self)?.sprite.setHidden()
         
     }
     var posisiawal : CGPoint?
     var lama : TimeInterval = 0
-    
+    var totalTime : TimeInterval = 0
     override func update(deltaTime seconds: TimeInterval) {
        
 //        if (self.seeking!){
@@ -129,15 +129,22 @@ class PlayingBallState : GameState {
 //            //            self.trackingAgent!.position = vector_float2(x:Float(self.lastPosition!.x),y:Float(self.lastPosition!.y))
 //        }
 //
+        totalTime += seconds
         if tabrak == false{
             
                 self.petComponentSprite!.agent!.behavior!.setWeight(100, for: self.seekGoal!)
                 self.petComponentSprite!.agent!.behavior!.setWeight(0, for: self.stopGoal)
+            self.petComponentSprite!.agent!.maxSpeed = 500
+            self.petComponentSprite!.agent!.maxAcceleration = 200
+            self.petComponentSprite!.agent!.speed = 100
             
         }
         else{
-            self.petComponentSprite!.agent!.behavior!.setWeight(0, for: self.seekGoal!)
+            self.petComponentSprite!.agent!.behavior!.setWeight(100, for: self.seekGoal!)
             self.petComponentSprite!.agent!.behavior!.setWeight(1, for: self.stopGoal)
+            self.petComponentSprite!.agent!.maxSpeed = 100
+            self.petComponentSprite!.agent!.maxAcceleration = 50
+            self.petComponentSprite!.agent!.speed = 50
             
             lama += seconds
            
@@ -146,7 +153,10 @@ class PlayingBallState : GameState {
                 playTime += 1
             }
         }
-        if playTime >= 3 {
+        if playTime >= 3 || totalTime >= 15{
+            
+//            self.game.flies?.component(ofType: FlySpriteComponent.self)?.SetHidden()
+            self.game.pet?.tambahHappiness(tambah: 20)
             entity.component(ofType: PetIntelligenceComponent.self)?.stateMachine.enter(WalkingState2.self)
             print(playTime)
         }
@@ -155,7 +165,7 @@ class PlayingBallState : GameState {
 //            self.petComponentSprite!.agent!.behavior!.setWeight(100, for: self.stopGoal)
 //        }
         
-        print("playingBall State")
+//        print("playingBall State")
         if (self.petComponentSprite?.agent?.position.x)! < Float(self.petComponentSprite!.position.x)
         {
             self.petComponentSprite!.xScale = abs(self.petComponentSprite!.xScale) * -1
@@ -164,8 +174,8 @@ class PlayingBallState : GameState {
         else{
             self.petComponentSprite!.xScale = abs(self.petComponentSprite!.xScale)
         }
-        print("ball : \(self.ball!.agent!.position)")
-        print("pet : \(self.petComponentSprite!.agent!.position)")
+//        print("ball : \(self.ball!.agent!.position)")
+//        print("pet : \(self.petComponentSprite!.agent!.position)")
         self.ball?.zPosition = -1 * self.ball!.position.y
         self.petComponentSprite!.agent!.update(deltaTime: seconds)
         self.ball!.agent!.update(deltaTime: seconds)
@@ -213,6 +223,7 @@ class PlayingBallState : GameState {
         petMoveEnded()
         tabrak=false
         self.ball?.visualAgent?.removeFromParent()
+       
     }
     
    

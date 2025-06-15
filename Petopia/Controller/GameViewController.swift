@@ -10,18 +10,32 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+    static var scene : GameScene?
+    
+//    init() {
+//    
+//        self.scene = GameScene(size: self.view.bounds.size)
+//        
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        GameViewController.scene = GameScene(size: self.view.bounds.size)
         
-        let scene = GameScene(size: view.bounds.size)
+        
+//        let scene = GameScene(size: view.bounds.size)
         let skView = self.view as! SKView
-        skView.showsFPS = true
-        skView.showsNodeCount = true
+        skView.showsFPS = false
+        skView.showsNodeCount = false
         skView.ignoresSiblingOrder = true
-        skView.showsPhysics = true
-        scene.scaleMode = .aspectFill
-        skView.presentScene(scene)
+        skView.backgroundColor = .black
+        skView.showsPhysics = false
+        GameViewController.scene!.scaleMode = .aspectFill
+        skView.presentScene(GameViewController.scene!)
         
     }
     

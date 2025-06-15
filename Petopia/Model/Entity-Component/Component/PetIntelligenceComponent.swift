@@ -25,10 +25,12 @@ class PetIntelligenceComponent : GKComponent{
         let eat = EatingState(entity:self.pet , game: self.game)
         let bath = BathState(entity:self.pet , game: self.game)
         let wand = PlayingWandState(entity:self.pet , game: self.game)
+        let dead = DeadState(entity: self.pet, game: self.game)
 //        let idle = IdleState(entity:self.pet , game: self.game)
         
-        self.stateMachine = GKStateMachine(states: [walk,seek,ball,eat,bath,wand])
+        self.stateMachine = GKStateMachine(states: [walk,seek,ball,eat,bath,wand,dead])
         super.init()
+        print("init State")
     }
     
     required init?(coder: NSCoder) {
@@ -37,6 +39,7 @@ class PetIntelligenceComponent : GKComponent{
     
     override func update(deltaTime seconds: TimeInterval) {
         self.stateMachine.update(deltaTime: seconds)
+        print("PetIntelligenceComponent")
     }
     
 }
